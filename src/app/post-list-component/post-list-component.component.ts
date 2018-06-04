@@ -6,27 +6,30 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./post-list-component.component.css']
 })
 export class PostListComponentComponent implements OnInit {
-
-  @Input() postTitle: string;
-  @Input() postContent: string;
-  @Input() postLoveIts: number;
-  @Input() postCreatedAt: Date;
-
-  love(){
-    console.log('avant' + this.postLoveIts);
-    this.postLoveIts = this.postLoveIts + 1;
-    console.log('apres' + this.postLoveIts);
-
+  ngOnInit(): void {
   }
+  created = new Date();
+  posts = [
+    {
+      title: 'post 1',
+      content: 'dodoc kk opk jj hd ndjnd jdjdjcjcj cjdis cijd kffjifjf jijiri jfj kfjk irjrrij ',
+      loveIts: 7,
+      created_at: this.created
+    },
+    {
+      title: 'post 2',
+      content: 'dicjdo icjjcjf sjjsjjssjfi jdhdjvj kroko kokrok okrk krk kor kor ',
+      loveIts: -2,
+      created_at: this.created
+    },
+    {
+      title: 'post 3',
+      content: 'ududh icjdjs ocidjdfb jjvi rplprlp lprlp lprlprlp ll orkr korkok ',
+      loveIts: 0,
+      created_at: this.created
+    }
+  ];
 
-  notLove(){
-    this.postLoveIts = this.postLoveIts - 1;
-    console.log('apres' + this.postLoveIts);
-  }
 
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }
