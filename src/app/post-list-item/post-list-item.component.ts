@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {NgForm} from '@angular/forms';
+import {PostService} from '../services/postService';
 
 @Component({
   selector: 'app-post-list-item',
@@ -12,21 +14,29 @@ export class PostListItemComponent implements OnInit {
   @Input() postLoveIts: number;
   @Input() postCreatedAt: Date;
 
+  constructor(private postService: PostService) { }
+
+  ngOnInit() {
+  }
+
   love(){
     console.log('avant' + this.postLoveIts);
     this.postLoveIts = this.postLoveIts + 1;
     console.log('apres' + this.postLoveIts);
+    this.postService.emitPosts();
 
   }
 
   notLove(){
     this.postLoveIts = this.postLoveIts - 1;
     console.log('apres' + this.postLoveIts);
+    this.postService.emitPosts();
   }
 
-  constructor() { }
+  onSupprime() {
+    this.postService.supprimePost(this.postTitle, this.postContent, this.postLoveIts , this.postCreatedAt );
 
-  ngOnInit() {
   }
+
 
 }

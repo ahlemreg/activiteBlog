@@ -3,8 +3,8 @@
                 'list-group-item-success': postLoveIts>0,
                 'list-group-item-danger': postLoveIts<0}">
 
-
-  <h4>{{postTitle}}</h4> <span>{{ postCreatedAt | date:'short'}}</span>
+  <span id="spn">{{ postCreatedAt | date:'short'}}</span>
+  <h4>{{postTitle}}</h4>
   <p>{{postContent}}</p>
 
 
@@ -13,5 +13,10 @@
 
   <button class="btn btn-danger"
           (click)="notLove()">Don't love it</button>
+
+
+  <button id="btnSup" class="btn btn-primary"
+          (click)="onSupprime()">Supprimer</button>
+
 
 </li>
